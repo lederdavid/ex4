@@ -1,10 +1,12 @@
 #include <list>
 #include "Puzzle2dPiece.h"
-#include <iostream>
+#include "PuzzleGroup2d.h"
 
-int main(const int argc, char* argv[])
+
+//PuzzleGroup2d groupPuzzlePieces(const list<Puzzle2dPiece<5>>::iterator& begin, const list<Puzzle2dPiece<5>>::iterator& end);
+
+int main()
 {
-	Puzzle2dPiece<5> piece = { 0, 3, 2, -5 };
 	std::list<Puzzle2dPiece<5>> pieces = { { 0, 3, 2, -5 },{ 0, -2, 2, -5 } };
 	//auto groups = groupPuzzlePieces(pieces.begin(), pieces.end());
 	// note that there is no & on the auto below (was in previous version)

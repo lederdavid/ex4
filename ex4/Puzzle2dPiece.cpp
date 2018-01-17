@@ -3,6 +3,11 @@
 #include <cassert>
 using namespace std;
 
+template<int T>
+Puzzle2dPiece<T>::Puzzle2dPiece()
+{
+}
+
 template <int T>
 Puzzle2dPiece<T>::Puzzle2dPiece(std::vector<int> edges)
 {
