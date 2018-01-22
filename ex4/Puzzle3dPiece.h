@@ -10,7 +10,7 @@ class Puzzle3dPiece
 {
 public:
 	Puzzle3dPiece(int a, int b, int c, int d, int e, int f);
-	int edges[4]{};
+	int _edges[4]{};
 	void to_string();
 };
 
@@ -18,7 +18,7 @@ public:
 #endif
 
 template <int T>
-inline Puzzle3dPiece<T>::Puzzle3dPiece(const int a, const int b, const int c, const int d, const int e, const int f)
+Puzzle3dPiece<T>::Puzzle3dPiece(const int a, const int b, const int c, const int d, const int e, const int f)
 {
 	assert(-1 * T <= a && a <= T);
 	assert(-1 * T <= b && b <= T);
@@ -26,17 +26,18 @@ inline Puzzle3dPiece<T>::Puzzle3dPiece(const int a, const int b, const int c, co
 	assert(-1 * T <= d && d <= T);
 	assert(-1 * T <= e && e <= T);
 	assert(-1 * T <= f && f <= T);
-	edges[0] = a;
-	edges[1] = b;
-	edges[2] = c;
-	edges[3] = d;
-	edges[4] = e;
-	edges[5] = f;
+	_edges[0] = a;
+	_edges[1] = b;
+	_edges[2] = c;
+	_edges[3] = d;
+	_edges[4] = e;
+	_edges[5] = f;
 }
 
 template <int T>
-inline void Puzzle3dPiece<T>::to_string()
+void Puzzle3dPiece<T>::to_string()
 {
-	cout << "{" << edges[0] << ", " << edges[1] << ", " << edges[2] << ", " << edges[3] << edges[4] << edges[5] << "}" <<
+	cout << "{" << _edges[0] << ", " << _edges[1] << ", " << _edges[2] << ", " << _edges[3] << ", " << _edges[4] << ", " <<
+		_edges[5] << "}" <<
 		endl;
 }
