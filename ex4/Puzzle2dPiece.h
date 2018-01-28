@@ -12,11 +12,12 @@ public:
 	Puzzle2dPiece(int a, int b, int c, int d);
 	int _edges[4]{};
 	void to_string();
+	int _t;
 };
 
 
 template <int T>
-Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d)
+Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d) :_t(T)
 {
 	assert(-1 * T <= a && a <= T);
 	assert(-1 * T <= b && b <= T);
