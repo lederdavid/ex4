@@ -128,6 +128,7 @@
     <ClInclude Include="Puzzle3dPiece.h" />
     <ClInclude Include="PuzzleGroup2d.h" />
     <ClInclude Include="PuzzleGroup3d.h" />
+    <ClInclude Include="PuzzlePieceBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
