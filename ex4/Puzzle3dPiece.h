@@ -10,7 +10,7 @@ class Puzzle3dPiece
 {
 public:
 	Puzzle3dPiece(int a, int b, int c, int d, int e, int f);
-	int _edges[4]{};
+	int _edges[6]{};
 	void to_string();
 };
 
