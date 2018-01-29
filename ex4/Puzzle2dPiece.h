@@ -11,7 +11,7 @@ class Puzzle2dPiece : public PuzzlePieceBase
 {
 public:
 	Puzzle2dPiece(int a, int b, int c, int d);
-	//int _edges[4]{};
+	
 	vector<int> get_edges() override;
 	void to_string() override;
 private:
