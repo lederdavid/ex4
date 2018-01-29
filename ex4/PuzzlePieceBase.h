@@ -9,14 +9,15 @@ using namespace std;
 class PuzzlePieceBase
 {
 public:
-	PuzzlePieceBase(int K)
-	{
-		_K = K;
-	};
 	virtual ~PuzzlePieceBase() = default;
 	int _K;
 	virtual vector<int> get_edges() = 0;
 	virtual void to_string() = 0;
+protected:
+	PuzzlePieceBase(int K)
+	{
+		_K = K;
+	};
 };
 
 

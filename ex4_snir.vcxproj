@@ -107,6 +107,7 @@
     <ClInclude Include="ex4\Puzzle3dPiece.h" />
     <ClInclude Include="ex4\PuzzleGroup2d.h" />
     <ClInclude Include="ex4\PuzzleGroup3d.h" />
+    <ClInclude Include="ex4\PuzzlePieceBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
