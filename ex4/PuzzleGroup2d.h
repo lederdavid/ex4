@@ -3,69 +3,70 @@
 #define PUZZLEGROUP2_D_H_INCLUDED  
 #include <vector>
 #include "Puzzle2dPiece.h"
+#include <memory>
 #define ARRAY_FACTOR 50;
 
 
 class PuzzleGroup2d
 {
-	
 public:
-	void init_mat(vector<PuzzlePieceBase> pieces)
+	void init_mat()
 	{
-		_mat = new vector<PuzzlePieceBase*>***[size];
-		for(int a = 0; a< size; a++)
+		_mat = new vector<shared_ptr<PuzzlePieceBase>>***[size];
+		for (int a = 0; a < size; a++)
 		{
-			_mat[a] = new vector<PuzzlePieceBase*>**[size];
-			for(int b=0; b<size; b++)
+			_mat[a] = new vector<shared_ptr<PuzzlePieceBase>>**[size];
+			for (int b = 0; b < size; b++)
 			{
-				_mat[a][b] = new vector<PuzzlePieceBase*>*[size];
-				for (int c = 0; c<size; c++)
+				_mat[a][b] = new vector<shared_ptr<PuzzlePieceBase>>*[size];
+				for (int c = 0; c < size; c++)
 				{
-					_mat[a][b][c] = new vector<PuzzlePieceBase*>[size]();
+					_mat[a][b][c] = new vector<shared_ptr<PuzzlePieceBase>>[size]();
 				}
 			}
 		}
-
-
-		
 	}
 
-	PuzzleGroup2d(vector<PuzzlePieceBase> pieces)
-	{
-		assert(pieces.size() > 0);
-		_k = pieces[0].k;
-		size = 2 * pieces[0].k +2;
-		_pieces = pieces;
-		init_mat(pieces);
-		for (auto piece : _pieces)
-		{
-			vector<int> edges = piece.get_edges();
-			int i0 = face_to_index(edges[0]);
-			int i1 = face_to_index(edges[1]);
-			int i2 = face_to_index(edges[2]);
-			int i3 = face_to_index(edges[3]);
-			int min = face_to_index(numeric_limits<int>::min());
 
-			_mat[i0][i1][i2][i3].push_back(&piece);
-			_mat[i0][i1][i2][min].push_back(&piece);
-			_mat[i0][i1][min][i3].push_back(&piece);
-			_mat[i0][i1][min][min].push_back(&piece);
-			_mat[i0][min][i2][i3].push_back(&piece);
-			_mat[i0][min][i2][min].push_back(&piece);
-			_mat[i0][min][min][i3].push_back(&piece);
-			_mat[i0][min][min][min].push_back(&piece);
-			_mat[min][i1][i2][i3].push_back(&piece);
-			_mat[min][i1][i2][min].push_back(&piece);
-			_mat[min][i1][min][i3].push_back(&piece);
-			_mat[min][i1][min][min].push_back(&piece);
-			_mat[min][min][i2][i3].push_back(&piece);
-			_mat[min][min][i2][min].push_back(&piece);
-			_mat[min][min][min][i3].push_back(&piece);
-			_mat[min][min][min][min].push_back(&piece);
+
+	PuzzleGroup2d(const vector<shared_ptr<PuzzlePieceBase>>& pieces): _mat(nullptr)
+	{
+		assert(!pieces.empty());
+		_k = pieces[0]->_K;
+
+		size = 2 * _k + 2;
+		_pieces = pieces;
+		init_mat();
+
+		for (const shared_ptr<PuzzlePieceBase>& piece : pieces)
+		{
+			vector<int> edges = piece->get_edges();
+			const int i0 = face_to_index(edges[0]);
+			const int i1 = face_to_index(edges[1]);
+			const int i2 = face_to_index(edges[2]);
+			const int i3 = face_to_index(edges[3]);
+			const int min = face_to_index(numeric_limits<int>::min());
+
+			_mat[i0][i1][i2][i3].push_back(piece);
+			_mat[i0][i1][i2][min].push_back(piece);
+			_mat[i0][i1][min][i3].push_back(piece);
+			_mat[i0][i1][min][min].push_back(piece);
+			_mat[i0][min][i2][i3].push_back(piece);
+			_mat[i0][min][i2][min].push_back(piece);
+			_mat[i0][min][min][i3].push_back(piece);
+			_mat[i0][min][min][min].push_back(piece);
+			_mat[min][i1][i2][i3].push_back(piece);
+			_mat[min][i1][i2][min].push_back(piece);
+			_mat[min][i1][min][i3].push_back(piece);
+			_mat[min][i1][min][min].push_back(piece);
+			_mat[min][min][i2][i3].push_back(piece);
+			_mat[min][min][i2][min].push_back(piece);
+			_mat[min][min][min][i3].push_back(piece);
+			_mat[min][min][min][min].push_back(piece);
 		}
 	}
 
-	vector<PuzzlePieceBase*> get(PuzzlePieceBase piece)
+	vector<shared_ptr<PuzzlePieceBase>> get(PuzzlePieceBase piece)
 	{
 		vector<int> edges = piece.get_edges();
 
@@ -96,18 +97,19 @@ private:
 	int size;
 	int _k;
 
-	vector<PuzzlePieceBase*> ****_mat;
+	vector<shared_ptr<PuzzlePieceBase>>**** _mat;
 
-	vector<PuzzlePieceBase> _pieces;
+	vector<shared_ptr<PuzzlePieceBase>> _pieces;
 
-	int face_to_index(int k)
+	int face_to_index(int k) const
 	{
 		if (k == numeric_limits<int>::min())
 		{
 			return size - 1;
 		}
-		return k + T;
+		return k + _k;
 	}
+
 	// -50 => 0, 0 => 50, 50 => 100, all => 101
 	// vector<Puzzle2dPiece<T>*> _a[101];
 	// vector<Puzzle2dPiece<T>*> _b[101];
@@ -136,12 +138,12 @@ private:
 };
 
 
-template<class iterator_type>
+template <class iterator_type>
 PuzzleGroup2d groupPuzzlePieces(iterator_type begin, iterator_type end)
 {
 	int t = begin->_t;
-	vector<Puzzle2dPiece<T>> vector(begin, end);
-	return PuzzleGroup2d<T>(vector);
+	vector<PuzzlePieceBase> vector(begin, end);
+	return PuzzlePieceBase(vector);
 }
 
 
