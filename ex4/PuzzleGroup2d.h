@@ -29,7 +29,7 @@ public:
 
 
 
-	PuzzleGroup2d(const vector<shared_ptr<PuzzlePieceBase>>& pieces)
+	PuzzleGroup2d(const vector<shared_ptr<PuzzlePieceBase>>& pieces): _mat(nullptr)
 	{
 		assert(!pieces.empty());
 		_k = pieces[0]->_K;
@@ -38,7 +38,7 @@ public:
 		_pieces = pieces;
 		init_mat();
 
-		for (const shared_ptr<PuzzlePieceBase> piece : pieces)
+		for (const shared_ptr<PuzzlePieceBase>& piece : pieces)
 		{
 			vector<int> edges = piece->get_edges();
 			const int i0 = face_to_index(edges[0]);
@@ -46,7 +46,7 @@ public:
 			const int i2 = face_to_index(edges[2]);
 			const int i3 = face_to_index(edges[3]);
 			const int min = face_to_index(numeric_limits<int>::min());
-			
+
 			_mat[i0][i1][i2][i3].push_back(piece);
 			_mat[i0][i1][i2][min].push_back(piece);
 			_mat[i0][i1][min][i3].push_back(piece);
