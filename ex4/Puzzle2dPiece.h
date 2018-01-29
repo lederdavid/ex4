@@ -12,8 +12,7 @@ class Puzzle2dPiece : public PuzzlePieceBase
 public:
 	Puzzle2dPiece(int a, int b, int c, int d);
 	
-	vector<int> get_edges() override;
-	void to_string() override;
+	vector<int> get_edges() const override;
 private:
 	PuzzlePieceBase* base{};
 	vector<int> _edges;
@@ -23,6 +22,7 @@ private:
 template <int T>
 Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d) : PuzzlePieceBase(T)
 {
+	_D = 2;
 	assert(-1 * T <= a && a <= T);
 	assert(-1 * T <= b && b <= T);
 	assert(-1 * T <= c && c <= T);
@@ -35,14 +35,9 @@ Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int
 
 
 template <int T>
-vector<int> Puzzle2dPiece<T>::get_edges()
+vector<int> Puzzle2dPiece<T>::get_edges() const
 {
 	return _edges;
 }
 
-template <int T>
-void Puzzle2dPiece<T>::to_string()
-{
-	cout << "{" << _edges[0] << ", " << _edges[1] << ", " << _edges[2] << ", " << _edges[3] << "}" << endl;
-}
 #endif
