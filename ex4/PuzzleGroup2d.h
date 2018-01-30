@@ -27,6 +27,22 @@ public:
 		}
 	}
 
+	void delete_mat()
+	{
+		for (int a = 0; a < size; a++)
+		{
+			for (int b = 0; b < size; b++)
+			{
+				for (int c = 0; c < size; c++)
+				{
+					delete[] _mat[a][b][c];
+				}
+				delete[] _mat[a][b];
+			}
+			delete[] _mat[a];
+		}
+		delete[] _mat;
+	}
 
 	void add(PuzzlePieceBase* piece)
 	{
@@ -61,7 +77,12 @@ public:
 		size = 2 * _k + 2;
 		init_mat();
 	}
-	
+
+	~PuzzleGroup2d()
+	{
+		delete_mat();
+	}
+
 	vector<PuzzlePieceBase*> get(initializer_list<int> piece)
 	{
 		vector<int> vec(piece);
@@ -79,7 +100,6 @@ private:
 	int size;
 	int _k;
 	vector<PuzzlePieceBase*>**** _mat;
-	vector<PuzzlePieceBase> _piece;
 
 	int face_to_index(int k) const
 	{
