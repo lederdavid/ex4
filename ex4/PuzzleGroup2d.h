@@ -6,7 +6,6 @@
 #include <memory>
 #define ARRAY_FACTOR 50;
 
-
 class PuzzleGroup2d
 {
 public:
@@ -22,6 +21,23 @@ public:
 				for (int c = 0; c < size; c++)
 				{
 					_mat[a][b][c] = new vector<PuzzlePieceBase*>[size]();
+				}
+			}
+		}
+	}
+	void copy_mat(vector<PuzzlePieceBase*>**** other_mat)
+	{
+		for (int a = 0; a < size; a++)
+		{
+			for (int b = 0; b < size; b++)
+			{
+				for (int c = 0; c < size; c++)
+				{
+					for (int d = 0; d < size; d++)
+					{
+						vector<PuzzlePieceBase*> new_vec(other_mat[a][b][c][d]);
+						_mat[a][b][c][d] = new_vec;
+					}
 				}
 			}
 		}
@@ -83,16 +99,25 @@ public:
 		delete_mat();
 	}
 
+
+
+	PuzzleGroup2d(PuzzleGroup2d&& other) noexcept
+		: size(other.size),
+		  _k(other._k),
+		  _mat(nullptr)
+	{
+		init_mat();
+		copy_mat(other._mat);
+	}
+
 	vector<PuzzlePieceBase*> get(initializer_list<int> piece)
 	{
 		vector<int> vec(piece);
-		Puzzle2dPiece<0> puzzle_piece(vec[0], vec[1], vec[2], vec[3]);
-		vector<int> edges = puzzle_piece.get_edges();
 
-		int i0 = face_to_index(edges[0]);
-		int i1 = face_to_index(edges[1]);
-		int i2 = face_to_index(edges[2]);
-		int i3 = face_to_index(edges[3]);
+		int i0 = face_to_index(vec[0]);
+		int i1 = face_to_index(vec[1]);
+		int i2 = face_to_index(vec[2]);
+		int i3 = face_to_index(vec[3]);
 		return _mat[i0][i1][i2][i3];
 	}
 
@@ -120,7 +145,7 @@ PuzzleGroup2d groupPuzzlePieces(iterator_type begin, iterator_type end)
 	 {
 		 puzzle_group2d.add(&(*piece));
 	 }
-	 return puzzle_group2d;
+	return puzzle_group2d;
 }
 
 
