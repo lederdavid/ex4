@@ -124,11 +124,14 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GroupPuzzlePieces.h" />
     <ClInclude Include="Puzzle2dPiece.h" />
     <ClInclude Include="Puzzle3dPiece.h" />
-    <ClInclude Include="PuzzleGroup2d.h" />
-    <ClInclude Include="PuzzleGroup3d.h" />
+    <ClInclude Include="PuzzleGroupData.h" />
     <ClInclude Include="PuzzlePieceBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
