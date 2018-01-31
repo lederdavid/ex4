@@ -3,7 +3,9 @@
 #define PUZZLE_GROUP_PIECES_H_INCLUDED
 #include "PuzzleGroupBase.h"
 
-
+/**
+ * Recieve an iterator of pieces, initialize a puzzle-group and add pieces to it
+ */
 template <class iterator_type>
 
 PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
@@ -16,6 +18,9 @@ PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
 	return puzzle_group;
 }
 
+/**
+ * override operator << to work as to_string()
+ */
 inline ostream& operator<<(ostream& lhs, const PuzzlePieceBase& rhs)
 {
 	vector<int> edges = rhs.get_edges();

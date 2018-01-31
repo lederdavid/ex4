@@ -5,23 +5,22 @@
 #include "PuzzlePieceBase.h"
 using namespace std;
 
+/**
+ * Handles 2D pieces (especially for constructor)
+ */
 template <int T>
 class Puzzle2dPiece : public PuzzlePieceBase
 {
 public:
 	Puzzle2dPiece(int a, int b, int c, int d);
-
 	vector<int> get_edges() const override;
-private:
-	PuzzlePieceBase* base{};
-	vector<int> _edges;
 };
 
-
 template <int T>
-Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d) : PuzzlePieceBase(T), _edges(4)
+Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d) : PuzzlePieceBase(T)
 {
 	_D = 2;
+	//make sure all arguments are valid
 	assert(-1 * T <= a && a <= T);
 	assert(-1 * T <= b && b <= T);
 	assert(-1 * T <= c && c <= T);
@@ -31,7 +30,6 @@ Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int
 	_edges[2] = c;
 	_edges[3] = d;
 }
-
 
 template <int T>
 vector<int> Puzzle2dPiece<T>::get_edges() const
