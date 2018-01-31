@@ -16,7 +16,6 @@ public:
 	= default;
 	int _K; //parameter T of puzzle piece
 	int _D; //dimensions
-	vector<int> _edges;
 	virtual vector<int> get_edges() const = 0;
 	/**
 	 * override operator << to work as to_string()

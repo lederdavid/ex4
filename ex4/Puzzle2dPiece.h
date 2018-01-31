@@ -14,10 +14,12 @@ class Puzzle2dPiece : public PuzzlePieceBase
 public:
 	Puzzle2dPiece(int a, int b, int c, int d);
 	vector<int> get_edges() const override;
+private:
+	vector<int> _edges;
 };
 
 template <int T>
-Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d) : PuzzlePieceBase(T)
+Puzzle2dPiece<T>::Puzzle2dPiece(const int a, const int b, const int c, const int d) : PuzzlePieceBase(T), _edges(4)
 {
 	_D = 2;
 	//make sure all arguments are valid
