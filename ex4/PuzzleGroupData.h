@@ -16,6 +16,7 @@ public:
 		  _3dmat(nullptr),
 		  _2dmat(nullptr)
 	{
+		init();
 	}
 
 	void init()
@@ -68,6 +69,7 @@ public:
 		_3dmat(nullptr),
 		_2dmat(nullptr)
 	{
+		init();
 		if (_D == 2)
 		{
 			for (int a = 0; a < size; a++)
