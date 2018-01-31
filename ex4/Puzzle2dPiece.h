@@ -1,7 +1,6 @@
 #pragma once
 #ifndef PUZZLE2_DPIECE_H_INCLUDED
 #define PUZZLE2_DPIECE_H_INCLUDED   
-#include <iostream>
 #include <cassert>
 #include "PuzzlePieceBase.h"
 using namespace std;
@@ -11,7 +10,7 @@ class Puzzle2dPiece : public PuzzlePieceBase
 {
 public:
 	Puzzle2dPiece(int a, int b, int c, int d);
-	
+
 	vector<int> get_edges() const override;
 private:
 	PuzzlePieceBase* base{};

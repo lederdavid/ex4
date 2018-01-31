@@ -3,6 +3,7 @@
 #define PUZZLE_GROUP_PIECES_H_INCLUDED
 #include "PuzzleGroupBase.h"
 
+
 template <class iterator_type>
 
 PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
@@ -15,7 +16,7 @@ PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
 	return puzzle_group;
 }
 
-inline ostream & operator<<(ostream & lhs, const PuzzlePieceBase & rhs)
+inline ostream& operator<<(ostream& lhs, const PuzzlePieceBase& rhs)
 {
 	vector<int> edges = rhs.get_edges();
 	if (rhs._D == 2)

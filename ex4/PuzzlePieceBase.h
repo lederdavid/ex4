@@ -2,7 +2,7 @@
 #ifndef PUZZLE_PIECE_BASE_H_INCLUDED
 #define PUZZLE_PIECE_BASE_H_INCLUDED
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 

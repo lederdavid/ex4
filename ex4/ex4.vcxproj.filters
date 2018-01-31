@@ -21,6 +21,12 @@
     <ClCompile Include="PuzzleGroupBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PuzzleGroupData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzlePieceBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Puzzle2dPiece.h">

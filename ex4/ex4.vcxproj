@@ -123,6 +123,8 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PuzzleGroupBase.cpp" />
+    <ClCompile Include="PuzzleGroupData.cpp" />
+    <ClCompile Include="PuzzlePieceBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GroupPuzzlePieces.h" />
