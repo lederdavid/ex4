@@ -122,6 +122,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PuzzleGroupBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GroupPuzzlePieces.h" />

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef PUZZLE_GROUP_PIECES_H_INCLUDED
+#define PUZZLE_GROUP_PIECES_H_INCLUDED
 #include "PuzzleGroupBase.h"
 
 template <class iterator_type>
@@ -12,3 +14,19 @@ PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
 	}
 	return puzzle_group;
 }
+
+inline ostream & operator<<(ostream & lhs, const PuzzlePieceBase & rhs)
+{
+	vector<int> edges = rhs.get_edges();
+	if (rhs._D == 2)
+	{
+		lhs << "{" << edges[0] << ", " << edges[1] << ", " << edges[2] << ", " << edges[3] << "}";
+	}
+	else
+	{
+		lhs << "{" << edges[0] << ", " << edges[1] << ", " << edges[2] << ", " << edges[3] << ", " << edges[4] << ", " <<
+			edges[5] << "}";
+	}
+	return lhs;
+}
+#endif

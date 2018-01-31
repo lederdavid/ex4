@@ -1,6 +1,6 @@
 COMP = g++-5.3.0
 #put all your object files here
-OBJS = Main.o ex4headers.o GroupPuzzlePieces.o PuzzleGroupBase.o PuzzleGroupData.o PuzzlePieceBase.o PuzzleGroup2d.o PuzzleGroup3d.o  Puzzle2dPiece.o Puzzle3dPiece.o  
+OBJS = Main.o ex4headers.o GroupPuzzlePieces.o PuzzleGroupBase.o PuzzleGroupData.o PuzzlePieceBase.o   Puzzle2dPiece.o Puzzle3dPiece.o  
 #The executable filename DON'T CHANGE
 EXEC = ex4
 CPP_COMP_FLAG = -std=c++14 -Wall -Wextra \
@@ -16,19 +16,7 @@ Main.o: Main.cpp ex4headers.h
 ex4headers.o: ex4headers.h GroupPuzzlePieces.h  Puzzle2dPiece.h Puzzle3dPiece.h
 	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 	
-Puzzle2dPiece.h: Puzzle2dPiece.cpp Puzzle2dPiece.h
-	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-
-Puzzle3dPiece.h: Puzzle3dPiece.cpp Puzzle3dPiece.h
-	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-
-GroupPuzzlePieces.o: GroupPuzzlePieces.h PuzzleGroup2d.h PuzzleGroup3d.h
-	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-
-PuzzleGroup2d.o: PuzzleGroup2d.cpp PuzzleGroup2d.h PuzzleGroupBase.h
-	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-	
-PuzzleGroup3d.o: PuzzleGroup3d.cpp PuzzleGroup3d.h PuzzleGroupBase.h
+GroupPuzzlePieces.o: GroupPuzzlePieces.h PuzzleGroupBase.h
 	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 
 PuzzleGroupBase.o: PuzzleGroupBase.h PuzzleGroupData.h
@@ -37,16 +25,14 @@ PuzzleGroupBase.o: PuzzleGroupBase.h PuzzleGroupData.h
 PuzzleGroupData.o: PuzzleGroupData.h PuzzlePieceBase.h
 	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 
-PuzzlePieceBase.o: PuzzlePieceBase.h
+Puzzle2dPiece.h: Puzzle2dPiece.h PuzzlePieceBase.h
 	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-	
 
-	
+Puzzle3dPiece.h: Puzzle3dPiece.h PuzzlePieceBase.h
+	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 
-	
-
-	
-
+PuzzlePieceBase.o: PuzzlePieceBase.cpp PuzzlePieceBase.h
+	$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 	
 clean:
 	rm -f $(OBJS) $(EXEC)
