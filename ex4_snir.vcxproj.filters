@@ -18,9 +18,6 @@
     <ClCompile Include="ex4\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ex4\PuzzleGroup2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ex4\Puzzle2dPiece.h">

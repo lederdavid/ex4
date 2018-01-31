@@ -126,8 +126,6 @@ public:
 }
 
 private:
-	int size;
-	int _k;
 	vector<PuzzlePieceBase*>****** _mat;
 
 	void init_mat()
