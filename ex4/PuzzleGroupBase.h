@@ -9,33 +9,12 @@ using namespace std;
 class PuzzleGroupBase
 {
 public:
-	PuzzleGroupBase(int k, int d)
-		: _k(k),
-		  size(2*k + 2),
-		 _data(k, d)
-	{
-	}
+	PuzzleGroupBase(int k, int d);
+	PuzzleGroupBase(PuzzleGroupBase&& other) noexcept;
+	~PuzzleGroupBase();
 
-	PuzzleGroupBase(PuzzleGroupBase&& other) noexcept
-		: _k(other._k),
-		  size(other.size),
-		  _data(other._data)
-	{
-	}
-
-	~PuzzleGroupBase()
-	{
-		_data.free();
-	}
-
-	vector<PuzzlePieceBase*> get(initializer_list<int> piece) const
-	{
-		return _data.get(piece);
-	}
-	void add(PuzzlePieceBase* piece) const
-	{
-		_data.add(piece);
-	}
+	vector<PuzzlePieceBase*> get(initializer_list<int> piece) const;
+	void add(PuzzlePieceBase* piece) const;
 
 	int _k;
 	int size;

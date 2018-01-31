@@ -12,7 +12,7 @@ public:
 	PuzzleGroupData(int k, int d);
 	PuzzleGroupData(PuzzleGroupData& other);
 	void init();
-	void free();
+	void free() const;
 	vector<PuzzlePieceBase*> get(initializer_list<int> piece) const;
 	void add(PuzzlePieceBase* piece) const;
 	int _D;

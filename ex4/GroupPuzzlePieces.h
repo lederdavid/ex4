@@ -1,5 +1,8 @@
 #pragma once
+#ifndef PUZZLE_GROUP_PIECES_H_INCLUDED
+#define PUZZLE_GROUP_PIECES_H_INCLUDED
 #include "PuzzleGroupBase.h"
+
 
 template <class iterator_type>
 
@@ -12,7 +15,6 @@ PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
 	}
 	return puzzle_group;
 }
-
 
 inline ostream& operator<<(ostream& lhs, const PuzzlePieceBase& rhs)
 {
@@ -27,4 +29,5 @@ inline ostream& operator<<(ostream& lhs, const PuzzlePieceBase& rhs)
 			edges[5] << "}";
 	}
 	return lhs;
-};
+}
+#endif
