@@ -38,5 +38,14 @@
     <ClInclude Include="ex4\PuzzlePieceBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ex4\ex4headers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ex4\PuzzleGroupBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ex4\GroupPuzzlePieces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

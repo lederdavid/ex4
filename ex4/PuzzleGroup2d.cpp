@@ -1,6 +1,5 @@
-#include "PuzzleGroup2d.h"
-#define ARRAY_FACTOR 50;
-using namespace std;
+//#include "PuzzleGroup2d.h"
+
 
 
 //template <int T>
