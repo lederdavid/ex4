@@ -185,6 +185,7 @@ void PuzzleGroupData::add(PuzzlePieceBase* piece) const
 	const int min = face_to_index(numeric_limits<int>::min());
 	if (_D == 3)
 	{
+		// get all 64 combinations of indexes and min_value
 		int indexes[6] = {
 			face_to_index(edges[0]), face_to_index(edges[1]), face_to_index(edges[2]), face_to_index(edges[3]),
 			face_to_index(edges[4]), face_to_index(edges[5])
@@ -212,6 +213,7 @@ void PuzzleGroupData::add(PuzzlePieceBase* piece) const
 	}
 	else
 	{
+		// get all 16 combinations of indexes and min_value
 		int indexes[4] = {face_to_index(edges[0]), face_to_index(edges[1]), face_to_index(edges[2]), face_to_index(edges[3])};
 		int j_indexes[4] = {};
 		for (int i = 0; i < 16; i++)
@@ -235,6 +237,7 @@ void PuzzleGroupData::add(PuzzlePieceBase* piece) const
 		}
 	}
 }
+
 
 int PuzzleGroupData::face_to_index(int k) const
 {
