@@ -13,28 +13,29 @@ public:
 	void add(PuzzlePieceBase* piece) const
 	{
 		vector<int> edges = piece->get_edges();
-		const int i0 = face_to_index(edges[0]);
-		const int i1 = face_to_index(edges[1]);
-		const int i2 = face_to_index(edges[2]);
-		const int i3 = face_to_index(edges[3]);
 		const int min = face_to_index(numeric_limits<int>::min());
 
-		_mat[i0][i1][i2][i3].push_back(piece);
-		_mat[i0][i1][i2][min].push_back(piece);
-		_mat[i0][i1][min][i3].push_back(piece);
-		_mat[i0][i1][min][min].push_back(piece);
-		_mat[i0][min][i2][i3].push_back(piece);
-		_mat[i0][min][i2][min].push_back(piece);
-		_mat[i0][min][min][i3].push_back(piece);
-		_mat[i0][min][min][min].push_back(piece);
-		_mat[min][i1][i2][i3].push_back(piece);
-		_mat[min][i1][i2][min].push_back(piece);
-		_mat[min][i1][min][i3].push_back(piece);
-		_mat[min][i1][min][min].push_back(piece);
-		_mat[min][min][i2][i3].push_back(piece);
-		_mat[min][min][i2][min].push_back(piece);
-		_mat[min][min][min][i3].push_back(piece);
-		_mat[min][min][min][min].push_back(piece);
+		int indexes[4] = {face_to_index(edges[0]), face_to_index(edges[1]), face_to_index(edges[2]), face_to_index(edges[3])};
+		int j_indexes[4] = {};
+		for (int i = 0; i < 16; i++)
+		{
+			int num = i;
+			int i2 = 8;
+			for (int j = 0; j < 3; j++)
+			{
+				if (num / i2 == 0)
+				{
+					j_indexes[j] = indexes[j];
+				}
+				else
+				{
+					j_indexes[j] = min;
+					num -= i2;
+				}
+				i2 /= 2;
+			}
+			_mat[j_indexes[0]][j_indexes[1]][j_indexes[2]][j_indexes[3]].push_back(piece);
+		}
 	}
 
 	PuzzleGroup2d(int k): PuzzleGroupBase(k), _mat(nullptr)

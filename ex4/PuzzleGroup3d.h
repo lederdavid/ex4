@@ -13,84 +13,32 @@ public:
 	void add(PuzzlePieceBase* piece) const
 	{
 		vector<int> edges = piece->get_edges();
-		const int i0 = face_to_index(edges[0]);
-		const int i1 = face_to_index(edges[1]);
-		const int i2 = face_to_index(edges[2]);
-		const int i3 = face_to_index(edges[3]);
-		const int i4 = face_to_index(edges[4]);
-		const int i5 = face_to_index(edges[5]);
 		const int min = face_to_index(numeric_limits<int>::min());
 
-		_mat[i0][i1][i2][i3][i4][i5].push_back(piece);
-
-		_mat[i0][i1][i2][i3][i4][min].push_back(piece);
-
-		_mat[i0][i1][i2][i3][min][i5].push_back(piece);
-		_mat[i0][i1][i2][i3][min][min].push_back(piece);
-
-		_mat[i0][i1][i2][min][i4][i5].push_back(piece);
-		_mat[i0][i1][i2][min][i4][min].push_back(piece);
-		_mat[i0][i1][i2][min][min][i5].push_back(piece);
-		_mat[i0][i1][i2][min][min][min].push_back(piece);
-
-		_mat[i0][i1][min][i3][i4][i5].push_back(piece);
-		_mat[i0][i1][min][i3][i4][min].push_back(piece);
-		_mat[i0][i1][min][i3][min][i5].push_back(piece);
-		_mat[i0][i1][min][i3][min][min].push_back(piece);
-		_mat[i0][i1][min][min][i4][i5].push_back(piece);
-		_mat[i0][i1][min][min][i4][min].push_back(piece);
-		_mat[i0][i1][min][min][min][i5].push_back(piece);
-		_mat[i0][i1][min][min][min][min].push_back(piece);
-
-		_mat[i0][min][i2][i3][i4][i5].push_back(piece);
-		_mat[i0][min][i2][i3][i4][min].push_back(piece);
-		_mat[i0][min][i2][i3][min][i5].push_back(piece);
-		_mat[i0][min][i2][i3][min][min].push_back(piece);
-		_mat[i0][min][i2][min][i4][i5].push_back(piece);
-		_mat[i0][min][i2][min][i4][min].push_back(piece);
-		_mat[i0][min][i2][min][min][i5].push_back(piece);
-		_mat[i0][min][i2][min][min][min].push_back(piece);
-		_mat[i0][min][min][i3][i4][i5].push_back(piece);
-		_mat[i0][min][min][i3][i4][min].push_back(piece);
-		_mat[i0][min][min][i3][min][i5].push_back(piece);
-		_mat[i0][min][min][i3][min][min].push_back(piece);
-		_mat[i0][min][min][min][i4][i5].push_back(piece);
-		_mat[i0][min][min][min][i4][min].push_back(piece);
-		_mat[i0][min][min][min][min][i5].push_back(piece);
-		_mat[i0][min][min][min][min][min].push_back(piece);
-
-		_mat[min][i1][i2][i3][i4][i5].push_back(piece);
-		_mat[min][i1][i2][i3][i4][min].push_back(piece);
-		_mat[min][i1][i2][i3][min][i5].push_back(piece);
-		_mat[min][i1][i2][i3][min][min].push_back(piece);
-		_mat[min][i1][i2][min][i4][i5].push_back(piece);
-		_mat[min][i1][i2][min][i4][min].push_back(piece);
-		_mat[min][i1][i2][min][min][i5].push_back(piece);
-		_mat[min][i1][i2][min][min][min].push_back(piece);
-		_mat[min][i1][min][i3][i4][i5].push_back(piece);
-		_mat[min][i1][min][i3][i4][min].push_back(piece);
-		_mat[min][i1][min][i3][min][i5].push_back(piece);
-		_mat[min][i1][min][i3][min][min].push_back(piece);
-		_mat[min][i1][min][min][i4][i5].push_back(piece);
-		_mat[min][i1][min][min][i4][min].push_back(piece);
-		_mat[min][i1][min][min][min][i5].push_back(piece);
-		_mat[min][i1][min][min][min][min].push_back(piece);
-		_mat[min][min][i2][i3][i4][i5].push_back(piece);
-		_mat[min][min][i2][i3][i4][min].push_back(piece);
-		_mat[min][min][i2][i3][min][i5].push_back(piece);
-		_mat[min][min][i2][i3][min][min].push_back(piece);
-		_mat[min][min][i2][min][i4][i5].push_back(piece);
-		_mat[min][min][i2][min][i4][min].push_back(piece);
-		_mat[min][min][i2][min][min][i5].push_back(piece);
-		_mat[min][min][i2][min][min][min].push_back(piece);
-		_mat[min][min][min][i3][i4][i5].push_back(piece);
-		_mat[min][min][min][i3][i4][min].push_back(piece);
-		_mat[min][min][min][i3][min][i5].push_back(piece);
-		_mat[min][min][min][i3][min][min].push_back(piece);
-		_mat[min][min][min][min][i4][i5].push_back(piece);
-		_mat[min][min][min][min][i4][min].push_back(piece);
-		_mat[min][min][min][min][min][i5].push_back(piece);
-		_mat[min][min][min][min][min][min].push_back(piece);
+		int indexes[6] = {
+			face_to_index(edges[0]), face_to_index(edges[1]), face_to_index(edges[2]), face_to_index(edges[3]),
+			face_to_index(edges[4]), face_to_index(edges[5])
+		};
+		int j_indexes[6] = {};
+		for (int i = 0; i < 64; i++)
+		{
+			int num = i;
+			int i2 = 32;
+			for (int j = 0; j < 6; j++)
+			{
+				if (num / i2 == 0)
+				{
+					j_indexes[j] = indexes[j];
+				}
+				else
+				{
+					j_indexes[j] = min;
+					num -= i2;
+				}
+				i2 /= 2;
+			}
+			_mat[j_indexes[0]][j_indexes[1]][j_indexes[2]][j_indexes[3]][j_indexes[4]][j_indexes[5]].push_back(piece);
+		}
 	}
 
 	PuzzleGroup3d(int k) :PuzzleGroupBase(k), _mat(nullptr)
@@ -126,6 +74,8 @@ public:
 }
 
 private:
+	int size{};
+	int _k{};
 	vector<PuzzlePieceBase*>****** _mat;
 
 	void init_mat()
