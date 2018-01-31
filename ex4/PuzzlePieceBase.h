@@ -9,7 +9,8 @@ using namespace std;
 class PuzzlePieceBase
 {
 public:
-	virtual ~PuzzlePieceBase();
+	virtual ~PuzzlePieceBase()
+	= default;
 	int _K;
 	int _D;
 	virtual vector<int> get_edges() const = 0;
