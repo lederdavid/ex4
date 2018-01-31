@@ -1,7 +1,6 @@
 #pragma once
 #ifndef PUZZLE_GROUP_BASE_H_INCLUDED
 #define PUZZLE_GROUP_BASE_H_INCLUDED
-#include "PuzzlePieceBase.h"
 #include "PuzzleGroupData.h"
 
 
