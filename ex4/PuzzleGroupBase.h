@@ -2,6 +2,7 @@
 #ifndef PUZZLE_GROUP_BASE_H_INCLUDED
 #define PUZZLE_GROUP_BASE_H_INCLUDED
 #include "PuzzlePieceBase.h"
+#include "PuzzleGroupData.h"
 
 
 using namespace std;
@@ -9,30 +10,35 @@ using namespace std;
 class PuzzleGroupBase
 {
 public:
-	PuzzleGroupBase(int k)
+	PuzzleGroupBase(int k, int d)
 		: _k(k),
-		  size(2*k + 2)
+		  size(2*k + 2),
+		 _data(k, d)
+	{
+	}
+
+	PuzzleGroupBase(PuzzleGroupBase&& other) noexcept
+		: _k(other._k),
+		  size(other.size),
+		  _data(other._data)
 	{
 	}
 
 	virtual ~PuzzleGroupBase() = default;
 
-	virtual vector<PuzzlePieceBase*> get(initializer_list<int> piece) const
+	vector<PuzzlePieceBase*> get(initializer_list<int> piece) const
 	{
-		return {};
+		return _data.get(piece);
 	}
-protected:
-	
-	int face_to_index(int k) const
+	void add(PuzzlePieceBase* piece) const
 	{
-		if (k == numeric_limits<int>::min())
-		{
-			return size - 1;
-		}
-		return k + _k;
+		_data.add(piece);
 	}
+
 	int _k;
 	int size;
+private:
+	PuzzleGroupData _data;
 };
 
 #endif
