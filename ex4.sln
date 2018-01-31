@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{18BDA0BE-AAF4-4E1A-B769-27F04FC5B433}"
 	ProjectSection(SolutionItems) = preProject
 		ex4\Main.cpp = ex4\Main.cpp
+		ex4\makefile = ex4\makefile
 		ex4\Puzzle2dPiece.cpp = ex4\Puzzle2dPiece.cpp
 		ex4\Puzzle2dPiece.h = ex4\Puzzle2dPiece.h
 	EndProjectSection
