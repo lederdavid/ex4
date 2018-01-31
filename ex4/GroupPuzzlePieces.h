@@ -15,12 +15,12 @@ PuzzleGroupBase groupPuzzlePieces(iterator_type begin, iterator_type end)
 		{
 			puzzle_group2d.add(&(*piece));
 		}
-		return puzzle_group2d;
+		return static_cast<PuzzleGroupBase>(puzzle_group2d);
 	}
 	PuzzleGroup3d puzzle_group3d(begin->_K);
 	for (iterator_type piece = begin; piece != end; ++piece)
 	{
 		puzzle_group3d.add(&(*piece));
 	}
-	return puzzle_group3d;
+	return static_cast<PuzzleGroupBase>(puzzle_group3d);
 }

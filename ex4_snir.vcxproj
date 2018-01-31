@@ -100,7 +100,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ex4\Main.cpp" />
-    <ClCompile Include="ex4\PuzzleGroup2d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ex4\ex4headers.h" />

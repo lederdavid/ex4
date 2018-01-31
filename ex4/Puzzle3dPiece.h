@@ -20,7 +20,7 @@ private:
 
 template <int T>
 Puzzle3dPiece<T>::
-Puzzle3dPiece(const int a, const int b, const int c, const int d, const int e, const int f) : PuzzlePieceBase(T)
+Puzzle3dPiece(const int a, const int b, const int c, const int d, const int e, const int f) : PuzzlePieceBase(T), _edges(6)
 {
 	_D = 3;
 	assert(-1 * T <= a && a <= T);
