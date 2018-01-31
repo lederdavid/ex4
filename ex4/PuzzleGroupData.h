@@ -3,7 +3,6 @@
 #define PUZZLE_GROUP_DATA_H_INCLUDED
 #include "PuzzlePieceBase.h"
 
-
 using namespace std;
 
 class PuzzleGroupData

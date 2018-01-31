@@ -1,4 +1,5 @@
 #include "PuzzleGroupData.h"
+#include <limits>
 
 
 using namespace std;
