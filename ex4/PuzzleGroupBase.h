@@ -24,7 +24,10 @@ public:
 	{
 	}
 
-	virtual ~PuzzleGroupBase() = default;
+	~PuzzleGroupBase()
+	{
+		_data.free();
+	}
 
 	vector<PuzzlePieceBase*> get(initializer_list<int> piece) const
 	{
