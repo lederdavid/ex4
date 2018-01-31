@@ -35,5 +35,17 @@
     <ClInclude Include="PuzzlePieceBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ex4headers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupPuzzlePieces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleGroupBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PuzzleGroupData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

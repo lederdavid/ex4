@@ -1,9 +1,8 @@
 #pragma once
 #ifndef PUZZLE3_DPIECE_H_INCLUDED
 #define PUZZLE3_DPIECE_H_INCLUDED   
-#include <iostream>
 #include <cassert>
-#include "PuzzlePieceBase.h"
+
 using namespace std;
 
 template <int T>
@@ -20,7 +19,8 @@ private:
 
 template <int T>
 Puzzle3dPiece<T>::
-Puzzle3dPiece(const int a, const int b, const int c, const int d, const int e, const int f) : PuzzlePieceBase(T), _edges(6)
+Puzzle3dPiece(const int a, const int b, const int c, const int d, const int e, const int f) : PuzzlePieceBase(T),
+                                                                                              _edges(6)
 {
 	_D = 3;
 	assert(-1 * T <= a && a <= T);

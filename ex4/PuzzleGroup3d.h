@@ -2,8 +2,6 @@
 #ifndef PUZZLEGROUP3_D_H_INCLUDED
 #define PUZZLEGROUP3_D_H_INCLUDED  
 #include <vector>
-#include "PuzzlePieceBase.h"
-#include <memory>
 #include "PuzzleGroupBase.h"
 
 
@@ -37,11 +35,13 @@ public:
 				}
 				i2 /= 2;
 			}
+//			cout << j_indexes[0] << "  " << j_indexes[1] << "  " << j_indexes[2] << "  " << j_indexes[3] << "  " << j_indexes[4]
+//				<< "  " << j_indexes[5] << endl;
 			_mat[j_indexes[0]][j_indexes[1]][j_indexes[2]][j_indexes[3]][j_indexes[4]][j_indexes[5]].push_back(piece);
 		}
 	}
 
-	PuzzleGroup3d(int k) :PuzzleGroupBase(k), _mat(nullptr)
+	PuzzleGroup3d(int k) : PuzzleGroupBase(k), _mat(nullptr)
 	{
 		init_mat();
 	}
@@ -70,8 +70,9 @@ public:
 		const int i3 = face_to_index(vec[3]);
 		const int i4 = face_to_index(vec[4]);
 		const int i5 = face_to_index(vec[5]);
+
 		return _mat[i0][i1][i2][i3][i4][i5];
-}
+	}
 
 private:
 	int size{};

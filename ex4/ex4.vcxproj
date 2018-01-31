@@ -124,10 +124,14 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ex4headers.h" />
+    <ClInclude Include="GroupPuzzlePieces.h" />
     <ClInclude Include="Puzzle2dPiece.h" />
     <ClInclude Include="Puzzle3dPiece.h" />
     <ClInclude Include="PuzzleGroup2d.h" />
     <ClInclude Include="PuzzleGroup3d.h" />
+    <ClInclude Include="PuzzleGroupBase.h" />
+    <ClInclude Include="PuzzleGroupData.h" />
     <ClInclude Include="PuzzlePieceBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

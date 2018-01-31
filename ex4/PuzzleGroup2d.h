@@ -2,9 +2,8 @@
 #ifndef PUZZLEGROUP2_D_H_INCLUDED
 #define PUZZLEGROUP2_D_H_INCLUDED  
 #include <vector>
-#include "PuzzlePieceBase.h"
-#include <memory>
 #include "PuzzleGroupBase.h"
+#include <iostream>
 
 
 class PuzzleGroup2d : public PuzzleGroupBase
@@ -21,7 +20,7 @@ public:
 		{
 			int num = i;
 			int i2 = 8;
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < 4; j++)
 			{
 				if (num / i2 == 0)
 				{
@@ -34,6 +33,7 @@ public:
 				}
 				i2 /= 2;
 			}
+			cout << j_indexes[0] << "  " << j_indexes[1] << "  " << j_indexes[2] << "  " << j_indexes[3] << endl;
 			_mat[j_indexes[0]][j_indexes[1]][j_indexes[2]][j_indexes[3]].push_back(piece);
 		}
 	}
@@ -70,6 +70,7 @@ public:
 
 private:
 	vector<PuzzlePieceBase*>**** _mat;
+
 	void init_mat()
 	{
 		_mat = new vector<PuzzlePieceBase*>***[size];
@@ -122,9 +123,6 @@ private:
 		delete[] _mat;
 	}
 };
-
-
-
 
 
 #endif
